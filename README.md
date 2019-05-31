@@ -54,27 +54,27 @@ How do people feel about the overall mapping rate?  Why might it be what it is?
 
 2. Explore the documentation for BWA on ASC.
 
-1) From the ascdoc above, there is no need to create a queue script for BWA. However, take note that you will need to load it into your workspace by using the “module load” command. Back in your terminal session, load the BWA module.
+3. From the ascdoc above, there is no need to create a queue script for BWA. However, take note that you will need to load it into your workspace by using the “module load” command. Back in your terminal session, load the BWA module.
 
-1) To see the usage information for BWA and begin utilizing the software, run `bwa` after loading the module.
+4. To see the usage information for BWA and begin utilizing the software, run `bwa` after loading the module.
 Note from the output that, similar to genome tools (gt, which you used for assembly assessment), or Samtools, the usage of BWA is `bwa <subcommand> [options]`; so to see the options for creating an index:
 
     a. run `bwa index`   
     You can see that the minimal information to provide bwa is the name of the *.fasta file to serve as the reference. Thus, now run `bwa index` with the name of the file that you will use for the *reference* (i.e., the same one used previously for Bowtie2).
 
-1) Once the above is complete, do a `ls -alt` and note that there are _five_ new files in the current directory with 2-3 letters as file extensions. All of these represent the index created by BWA and are required for the index to be valid and functional (just like BLAST+ and Bowtie2). **INFO**: BWA and Bowtie2 use their own index formats that are NOT interchangeable.
+5. Once the above is complete, do a `ls -alt` and note that there are _five_ new files in the current directory with 2-3 letters as file extensions. All of these represent the index created by BWA and are required for the index to be valid and functional (just like BLAST+ and Bowtie2). **INFO**: BWA and Bowtie2 use their own index formats that are NOT interchangeable.
 
 
-1) Now let’s see how we can use BWA to map against this index.
+6. Now let’s see how we can use BWA to map against this index.
 
     a. `bwa`  
     From reading the end of the usage message, we are suggested to try “bwa mem” as a starting point. Let’s see what options are available for that.  
     b.  `bwa mem`  
     From reading the “Usage:” statement, we will minimally have to supply the name of the index to use as well as the two (2) `*.fastq` files of reads to be mapped. Also note that since there is no explicit option regarding the output, we should make the assumption that it would be directed to the screen (which we don’t want). So a redirect (i.e., >) will need to be appended to the end of the command to a file we name with a .sam extension (keep track of this). Lastly, the `–t` can be added to use more than one CPU. So add a `–t 2` to your command to take advantage of two CPUs. Draft out your command on paper or text editor and when ready, enter it into Terminal and execute.
 
-1) Once the mapping completes, note the size of the resulting SAM file and compare it to the one you got from Bowtie2. Are they similar in size? Why do you think so?
+7. Once the mapping completes, note the size of the resulting SAM file and compare it to the one you got from Bowtie2. Are they similar in size? Why do you think so?
 
-1) Unlike Bowtie2, BWA does not provide a summary of the mapping at the end of a run. But this information can be obtained using a separate program called **bam**.
+8. Unlike Bowtie2, BWA does not provide a summary of the mapping at the end of a run. But this information can be obtained using a separate program called **bam**.
 
     a. `bam`   
     Note that like BWA, “bam” expects a <command> [options] structure. Since we want basic stats for the SAM file we generated from BWA, the command would be:  
