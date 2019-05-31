@@ -38,13 +38,14 @@
     
     `l –h *.sam`  (SAM files can be huge, hence the need for a compressed, binary version: BAM files).  
 
-11. Before we move on, the last thing to do is determine just how many reads mapped to our reference. This information can be found by tailing the log report from the run: `tail -29 Bowtie2example.*`
+11. Before we move on, the last thing to do is determine just how many reads mapped to our reference. This information can be found by tailing the log report from the run: 
+    a. `tail -29 Bowtie2example.*`
 
     The overall alignment rate will be in the middle of the output, just above the first line of hashes (i.e., \####).
 Check with other members of your group regarding their overall mapping rates.
 How do people feel about the overall mapping rate?  Why might it be what it is?
 
-    2. Now use Samtools to determine the number of reads mapped:  
+    b. Now use Samtools to determine the number of reads mapped:  
 
 
 ### Part 2 --- Mapping reads to a reference with BWA.
