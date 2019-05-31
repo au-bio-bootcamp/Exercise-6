@@ -10,7 +10,7 @@
     b. Click on "Sequence alignment", then "Bowtie2".   
 
 
-1) In the README module, you can see the queue script normally required to run a real Bowtie2 job. An example script named **Bowtie2_example.sh** is located at: /home/shared/biobootcamp/data/example_ASC_queue_scripts.
+1) In the README module, you can see the queue script normally required to run a real Bowtie2 job. An example script named `Bowtie2_example.sh` is located at: `/home/shared/biobootcamp/data/example_ASC_queue_scripts`.
 
 1) Make a copy of the script to your home directory.  
 
@@ -24,17 +24,17 @@
     a. e.g. `nano Bowtie2_example.sh`  
     b. Note that both the indexing and mapping steps are included and that comments in the script indicate where you will be adding your commands once you decide what you need to do.   
 
-1) You will need raw FASTQ files of paired-end Illumina reads copied to your working directory. Copy them to your working directory from “~/shared/data/Lamellibrachia_luymesi_sequence_reads_for_assembly/”.  The two files are named **Lamellibrachia_luymesi_genomic_L001_R1_001.fastq** and **Lamellibrachia_luymesi_genomic_L001_R2_001.fastq**.  Can you think of an easy way to check if these files represent a properly paired set of reads, using basic command line utilities?
+1) You will need raw FASTQ files of paired-end Illumina reads copied to your working directory. Copy them to your working directory from “~/shared/data/Lamellibrachia_luymesi_sequence_reads_for_assembly/”.  The two files are named `Lamellibrachia_luymesi_genomic_L001_R1_001.fastq` and `Lamellibrachia_luymesi_genomic_L001_R2_001.fastq`.  Can you think of an easy way to check if these files represent a properly paired set of reads, using basic command line utilities?
 
 1) Next, you will need a reference sequence to map the reads to. For this exercise, you will be using the potentially complete mitochondrial genome from *Lamellibrachia luymesi* that you identified in Exercise #3 on Tuesday morning. Make a copy of that file to your current working directory.
 
-1) You now should have everything you need in the current working directory: the **Bowtie2_example.sh** queue script, two \*.fastq files of reads derived from genomic DNA and the \*.fasta file containing the potentially complete mitochondrial genome to serve as a reference.  Check to be sure by “long listing” the current directory.
+1) You now should have everything you need in the current working directory: the `Bowtie2_example.sh` queue script, two `*.fastq` files of reads derived from genomic DNA and the `*.fasta file` containing the potentially complete mitochondrial genome to serve as a reference.  Check to be sure by “long listing” the current directory.
 
-1) Now it’s time to add the required information to the queue script. You will need to include the names of the \*.fasta and \*.fastq files as well as what you want the “basename” for the index files and output SAM file to be. A suggestion for the basename is: “potential_mito_genome_Lamellibrachia_luymesi”. Another suggestion is to write down the names of each file on paper for reference when you are adding them to the appropriate place in the ‘Bowtie2_example.sh’ queue script. Once this is done, save the script, note the run conditions for the ASC queue at the bottom of the script and exit from nano.
+1) Now it’s time to add the required information to the queue script. You will need to include the names of the `*.fasta` and `*.fastq` files as well as what you want the “basename” for the index files and output SAM file to be. A suggestion for the basename is: “potential_mito_genome_Lamellibrachia_luymesi”. Another suggestion is to write down the names of each file on paper for reference when you are adding them to the appropriate place in the `Bowtie2_example.sh` queue script. Once this is done, save the script, note the run conditions for the ASC queue at the bottom of the script and exit from nano.
 
 1) Now submit the job to the ASC queue system and monitor the job using `squeue`.
 
-1) Once complete (it should take 5-10 min), list the current working directory and note the many new files that have been created. All files ending in \*.bt2 represent the index created by Bowtie2-build and all are required for the index to be valid and functional. Keep this in mind if you construct Bowtie2 (or other mapper indices) in one location and then move it/them to another. You should also see your output SAM file. Take note of the size of this file by running:
+1) Once complete (it should take 5-10 min), list the current working directory and note the many new files that have been created. All files ending in `*.bt2` represent the index created by Bowtie2-build and all are required for the index to be valid and functional. Keep this in mind if you construct Bowtie2 (or other mapper indices) in one location and then move it/them to another. You should also see your output SAM file. Take note of the size of this file by running:
 
     a. `l –h *.sam`  (SAM files can be huge, hence the need for a compressed, binary version: BAM files).  
 
@@ -71,7 +71,7 @@ Note from the output that, similar to genome tools (gt, which you used for assem
     a. `bwa`  
     From reading the end of the usage message, we are suggested to try “bwa mem” as a starting point. Let’s see what options are available for that.  
     b.  `bwa mem`  
-    From reading the “Usage:” statement, we will minimally have to supply the name of the index to use as well as the two (2) \*.fastq files of reads to be mapped. Also note that since there is no explicit option regarding the output, we should make the assumption that it would be directed to the screen (which we don’t want). So a redirect (i.e., >) will need to be appended to the end of the command to a file we name with a .sam extension (keep track of this). Lastly, the `–t` can be added to use more than one CPU. So add a `–t 2` to your command to take advantage of two CPUs. Draft out your command on paper or text editor and when ready, enter it into Terminal and execute.
+    From reading the “Usage:” statement, we will minimally have to supply the name of the index to use as well as the two (2) `*.fastq` files of reads to be mapped. Also note that since there is no explicit option regarding the output, we should make the assumption that it would be directed to the screen (which we don’t want). So a redirect (i.e., >) will need to be appended to the end of the command to a file we name with a .sam extension (keep track of this). Lastly, the `–t` can be added to use more than one CPU. So add a `–t 2` to your command to take advantage of two CPUs. Draft out your command on paper or text editor and when ready, enter it into Terminal and execute.
 
 1) Once the mapping completes, note the size of the resulting SAM file and compare it to the one you got from Bowtie2. Are they similar in size? Why do you think so?
 
