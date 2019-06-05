@@ -30,9 +30,9 @@
 
 10. Once complete (it should take 5-10 min), list the current working directory and note the many new files that have been created. All files ending in `*.bt2` represent the index created by Bowtie2-build and all are required for the index to be valid and functional. Keep this in mind if you construct Bowtie2 (or other mapper indices) in one location and then move it/them to another. You should also see your output SAM file. Take note of the size of this file by running:
 
-    `l –h *.sam`  (SAM files can be huge, hence the need for a compressed, binary version: BAM files).  
+    `ls –lh *.sam`  (SAM files can be huge, hence the need for a compressed, binary version: BAM files).  
 
-11. Before we move on, the last thing to do is determine just how many reads mapped to our reference. This information can be found by tailing the log report from the run using: `tail -29 Bowtie2example.*`. The overall alignment rate will be in the middle of the output, just above the first line of hashes (i.e., ####).
+11. Before we move on, the last thing to do is determine just how many reads mapped to our reference. This information can be found by tailing the log report from the run using: `tail -n 29 Bowtie2example.*`. The overall alignment rate will be in the middle of the output, just above the first line of hashes (i.e., ####).
 Check with other members of your group regarding their overall mapping rates.
 How do people feel about the overall mapping rate?  Why might it be what it is?
 
